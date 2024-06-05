@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="container-fluid">
         <div class="row">
+            <!-- Sidebar -->
             <div class="col-md-2 col-12 sidebar">
                 <h5>Folders</h5>
                 <ul class="nav flex-column">
@@ -21,26 +22,26 @@
                     <li class="nav-item">Trash</li>
                 </ul>
             </div>
+            <!-- Email List -->
             <div class="col-md-4 col-12 email-list">
                 <h5>Email List</h5>
                 <div class="email-item">
-                    <span>Email Subject 1</span>
-                    <span class="date">Date</span>
+                    <span>Subject: Meeting Reminder</span>
+                    <span class="date">June 1, 2024</span>
                 </div>
                 <div class="email-item">
-                    <span>Email Subject 2</span>
-                    <span class="date">Date</span>
+                    <span>Subject: Project Update</span>
+                    <span class="date">June 2, 2024</span>
                 </div>
-                <div class="email-item">
-                    <span>Email Subject 3</span>
-                    <span class="date">Date</span>
+                <div class="email-item selected">
+                    <span>Subject: New Assignment</span>
+                    <span class="date">June 3, 2024</span>
                 </div>
             </div>
+            <!-- Email Content -->
             <div class="col-md-6 col-12 email-content">
-                <h5>Text here</h5>
-                <div class="message">
-                    <p>Message</p>
-                </div>
+                <h5>Email Content</h5>
+                <textarea class="message" rows="10" placeholder="Type your message here..."></textarea>
                 <button class="btn btn-primary compose">Compose</button>
             </div>
         </div>
