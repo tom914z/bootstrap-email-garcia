@@ -20,6 +20,11 @@ body {
     background-color: #808080;
     margin-bottom: 5px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.email-item.selected {
+    background-color: #4caf50;
 }
 
 .email-content {
@@ -33,6 +38,8 @@ body {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 5px;
+    width: 100%;
+    border: 1px solid #cccccc;
 }
 
 .compose {
