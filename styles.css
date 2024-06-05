@@ -1,0 +1,41 @@
+body {
+    background-color: #2c2f48;
+    color: #ffffff;
+}
+
+.sidebar {
+    background-color: #ff0000;
+    padding: 15px;
+}
+
+.email-list {
+    background-color: #008000;
+    padding: 15px;
+}
+
+.email-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #808080;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.email-content {
+    background-color: #ff00ff;
+    padding: 15px;
+}
+
+.message {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.compose {
+    background-color: #800000;
+    color: #ffffff;
+}
