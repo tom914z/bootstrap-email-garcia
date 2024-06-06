@@ -8,6 +8,10 @@ body {
     padding: 15px;
 }
 
+.search-bar {
+    margin-bottom: 15px;
+}
+
 .email-list {
     background-color: #008000;
     padding: 15px;
