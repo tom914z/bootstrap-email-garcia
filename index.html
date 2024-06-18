@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Email Template</title>
+    <title>Email Template</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,7 +32,7 @@
 
     <!-- Main Container -->
     <div class="container-fluid mt-3">
-        <div class="row">
+        <div class="row h-100">
             <!-- Sidebar -->
             <div class="col-lg-2 col-md-3 col-12 sidebar">
                 <h5>Folders</h5>
@@ -51,15 +49,15 @@
             <!-- Email List -->
             <div class="col-lg-4 col-md-5 col-12 email-list">
                 <h5>Email List</h5>
-                <div class="email-item">
+                <div class="email-item" data-content="Reminder about the meeting scheduled for June 5th at 10 AM.">
                     <span>Subject: Meeting Reminder</span>
                     <span class="date">June 1, 2024</span>
                 </div>
-                <div class="email-item">
+                <div class="email-item" data-content="Project update: We've finished the initial phase and are moving on to testing.">
                     <span>Subject: Project Update</span>
                     <span class="date">June 2, 2024</span>
                 </div>
-                <div class="email-item selected">
+                <div class="email-item selected" data-content="New assignment details: Complete the code review by next week.">
                     <span>Subject: New Assignment</span>
                     <span class="date">June 3, 2024</span>
                 </div>
@@ -80,6 +78,20 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <script>
+        // JavaScript to handle email selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailItems = document.querySelectorAll('.email-item');
+            const messageBox = document.querySelector('.message');
 
+            emailItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    emailItems.forEach(el => el.classList.remove('selected'));
+                    item.classList.add('selected');
+                    messageBox.value = item.getAttribute('data-content');
+                });
+            });
+        });
+    </script>
+</body>
 </html>
