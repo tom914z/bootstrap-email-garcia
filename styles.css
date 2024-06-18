@@ -3,10 +3,23 @@ body {
     background-color: #2c2f48;
     color: #ffffff;
     padding-top: 56px; /* Adjust for the navbar height */
+    height: 100vh; /* Ensure the body takes full viewport height */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
     margin-bottom: 20px;
+}
+
+/* Main Container */
+.container-fluid {
+    flex: 1;
+}
+
+.row {
+    height: calc(100vh - 56px); /* Ensure row takes full viewport height minus navbar */
 }
 
 /* Sidebar */
@@ -14,6 +27,8 @@ body {
     background-color: #343a40;
     color: #ffffff;
     padding: 15px;
+    height: 100%; /* Stretch to bottom */
+    overflow-y: auto; /* Enable scrolling */
 }
 
 .sidebar .nav-link {
@@ -33,6 +48,8 @@ body {
 .email-list {
     background-color: #495057;
     padding: 15px;
+    height: 100%; /* Stretch to bottom */
+    overflow-y: auto; /* Enable scrolling */
 }
 
 .email-item {
@@ -55,6 +72,9 @@ body {
     color: #212529;
     padding: 15px;
     border-radius: 5px;
+    height: 100%; /* Stretch to bottom */
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
@@ -65,6 +85,7 @@ body {
     border-radius: 5px;
     width: 100%;
     border: 1px solid #ced4da;
+    flex: 1; /* Take up remaining space */
 }
 
 .button-group .compose {
