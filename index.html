@@ -49,15 +49,15 @@
             <!-- Email List -->
             <div class="col-lg-4 col-md-5 col-12 email-list">
                 <h5>Email List</h5>
-                <div class="email-item" data-content="Reminder about the meeting scheduled for June 5th at 10 AM.">
+                <div class="email-item" data-subject="Meeting Reminder">
                     <span>Subject: Meeting Reminder</span>
                     <span class="date">June 1, 2024</span>
                 </div>
-                <div class="email-item" data-content="Project update: We've finished the initial phase and are moving on to testing.">
+                <div class="email-item" data-subject="Project Update">
                     <span>Subject: Project Update</span>
                     <span class="date">June 2, 2024</span>
                 </div>
-                <div class="email-item selected" data-content="New assignment details: Complete the code review by next week.">
+                <div class="email-item selected" data-subject="New Assignment">
                     <span>Subject: New Assignment</span>
                     <span class="date">June 3, 2024</span>
                 </div>
@@ -65,8 +65,8 @@
 
             <!-- Email Content -->
             <div class="col-lg-6 col-md-4 col-12 email-content">
-                <h5>Email Content</h5>
-                <textarea class="message" rows="10" placeholder="Type your message here..."></textarea>
+                <h5 id="email-subject">New Assignment</h5>
+                <textarea class="message" rows="10" placeholder="Enter a message"></textarea>
                 <div class="button-group mt-3">
                     <button class="btn btn-primary compose">Compose</button>
                     <button class="btn btn-secondary reply">Reply</button>
@@ -79,17 +79,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // JavaScript to handle email selection
+        // JavaScript to handle email selection and reply
         document.addEventListener('DOMContentLoaded', function() {
             const emailItems = document.querySelectorAll('.email-item');
             const messageBox = document.querySelector('.message');
+            const emailSubject = document.getElementById('email-subject');
+            const replyButton = document.querySelector('.reply');
 
             emailItems.forEach(item => {
                 item.addEventListener('click', function() {
                     emailItems.forEach(el => el.classList.remove('selected'));
                     item.classList.add('selected');
                     messageBox.value = item.getAttribute('data-content');
+                    emailSubject.innerText = item.getAttribute('data-subject');
                 });
+            });
+
+            replyButton.addEventListener('click', function() {
+                messageBox.value = "Enter your message...";
             });
         });
     </script>
