@@ -77,6 +77,12 @@ body {
     flex-direction: column;
 }
 
+#email-subject {
+    color: #343a40;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 .message {
     background-color: #ffffff;
     color: #212529;
