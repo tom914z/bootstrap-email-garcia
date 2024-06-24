@@ -11,11 +11,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Gmail</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-links">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link navbar-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -36,7 +32,7 @@
             <!-- Sidebar -->
             <div class="col-lg-2 col-md-3 col-12 sidebar">
                 <h5>Folders</h5>
-                <input type="text" class="form-control mb-3 search-bar" placeholder="Search...">
+                <input type="text" class="form-control mb-3 search-bar" placeholder="Search">
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="#" class="nav-link">Inbox</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Draft</a></li>
@@ -49,17 +45,72 @@
             <!-- Email List -->
             <div class="col-lg-4 col-md-5 col-12 email-list">
                 <h5>Email List</h5>
-                <div class="email-item" data-subject="Meeting Reminder" data-content="Don't forget our meeting at 10 AM tomorrow." data-text="Tomorrow's meeting is crucial for Q2 planning.">
+                <div class="email-item" data-subject="Meeting Reminder" data-content="" data-text="Good afternoon, 
+
+                If you are reading this, you have a meeting regarding computer programming on July 25th at 3pm at Bay Valley Tech in Modesto! 
+                Please show up 15 minutes before the meeting. DO NOT BE LATE!
+                
+                Thank you,
+                
+                Tomas">
                     <span>Meeting Reminder</span>
-                    <span class="date">June 17, 2024</span>
+                    <span class="date">June 24, 2024</span>
                 </div>
-                <div class="email-item" data-subject="Project Update" data-content="The project is progressing as planned. Next steps will be discussed in our meeting." data-text="Make sure to review the project timeline before the meeting.">
+                <div class="email-item" data-subject="Project Update" data-content="" data-text="Hi Team,
+
+                I hope this message finds you well. I wanted to provide a quick update on our current project, specifically regarding Sprint 3.
+                
+                Progress Summary:
+                
+                Feature Implementation: We successfully implemented the user authentication feature and integrated it with the backend services.
+                Bug Fixes: The critical bugs related to data synchronization have been resolved.
+                Testing: Initial testing of the new features has been completed with positive results.
+                Next Steps:
+                
+                Review & Feedback: Please review the current build and provide feedback by EOD Wednesday.
+                Documentation: Update the user guide with the new features by Friday.
+                Planning: We will have a planning session on Monday to outline the tasks for Sprint 4.
+                Action Items for the Team:
+                
+                 John: Complete the performance testing and report any issues.
+                 Anna: Update the documentation and share the link with the team.
+                 David: Prepare the agenda for the next planning session.
+
+                Please let me know if there are any concerns or if you need any assistance with your tasks.
+                
+                Best regards,
+                
+                Tomas
+                ">
                     <span>Project Update</span>
-                    <span class="date">June 18, 2024</span>
+                    <span class="date">June 25, 2024</span>
                 </div>
-                <div class="email-item selected" data-subject="New Assignment" data-content="You have been assigned a new task. Please check the project dashboard for details." data-text="Task details are available on the dashboard. Prioritize accordingly.">
+                <div class="email-item" data-subject="New Assignment" data-content="" data-text="Hello,
+
+                I hope you're doing well. I'm writing to inform you about a new assignment that requires your expertise.
+                
+                Assignment Details:
+                
+                Task: Analyze the results of our recent Customer Satisfaction Survey.
+                Objective: Identify key trends, areas of concern, and actionable insights to improve our customer service.
+                Deadline: Please submit your findings and recommendations by next Friday, June 30th.
+                
+                Specific Deliverables:
+
+                Analysis Report: A detailed report on the survey findings.
+                Presentation: A summary presentation for the management meeting scheduled for July 2nd.
+                Action Plan: Recommendations for improving customer satisfaction based on the analysis.
+                
+                Please review the assignment and confirm receipt. If you have any questions or need additional resources, feel free to reach out.
+
+                Thank you for your attention to this matter. I look forward to your insightful analysis.
+
+                Best regards,
+
+                Tomas Garcia
+                Supervisor">
                     <span>New Assignment</span>
-                    <span class="date">June 19, 2024</span>
+                    <span class="date">June 26, 2024</span>
                 </div>
             </div>
 
@@ -67,7 +118,7 @@
             <div class="col-lg-6 col-md-4 col-12 email-content">
                 <h5 id="email-subject">New Assignment</h5>
                 <textarea class="message" rows="10" placeholder="Enter a message"></textarea>
-                <p id="additional-text">Task details are available on the dashboard. Prioritize accordingly.</p>
+                <p id="additional-text"></p>
                 <div class="button-group mt-3">
                     <button class="btn btn-primary compose">Compose</button>
                     <button class="btn btn-secondary reply">Reply</button>
@@ -80,28 +131,39 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // JavaScript to handle email selection and reply
         document.addEventListener('DOMContentLoaded', function() {
             const emailItems = document.querySelectorAll('.email-item');
             const messageBox = document.querySelector('.message');
             const emailSubject = document.getElementById('email-subject');
             const additionalText = document.getElementById('additional-text');
             const replyButton = document.querySelector('.reply');
-
+    
             emailItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    emailItems.forEach(el => el.classList.remove('selected'));
-                    item.classList.add('selected');
-                    messageBox.value = item.getAttribute('data-content');
-                    emailSubject.innerText = item.getAttribute('data-subject');
-                    additionalText.innerText = item.getAttribute('data-text');
+                    // Check if this email is already selected
+                    if (item.classList.contains('selected')) {
+                        // Deselect the email
+                        item.classList.remove('selected');
+                        messageBox.value = "";
+                        emailSubject.innerText = "";
+                        additionalText.innerText = "";
+                    } else {
+                        // Deselect any currently selected email
+                        emailItems.forEach(el => el.classList.remove('selected'));
+    
+                        // Select the clicked email
+                        item.classList.add('selected');
+                        messageBox.value = item.getAttribute('data-content');
+                        emailSubject.innerText = item.getAttribute('data-subject');
+                        additionalText.innerText = item.getAttribute('data-text');
+                    }
                 });
             });
-
+    
             replyButton.addEventListener('click', function() {
                 messageBox.value = "";
             });
         });
-    </script>
+    </script>    
 </body>
 </html>
