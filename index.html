@@ -49,15 +49,15 @@
             <!-- Email List -->
             <div class="col-lg-4 col-md-5 col-12 email-list">
                 <h5>Email List</h5>
-                <div class="email-item" data-subject="Meeting Reminder">
+                <div class="email-item" data-subject="Meeting Reminder" data-content="" data-text="Tomorrow's meeting is crucial for Q2 planning.">
                     <span>Meeting Reminder</span>
                     <span class="date">June 17, 2024</span>
                 </div>
-                <div class="email-item" data-subject="Project Update">
+                <div class="email-item" data-subject="Project Update" data-content="" data-text="Make sure to review the project timeline before the meeting.">
                     <span>Project Update</span>
                     <span class="date">June 18, 2024</span>
                 </div>
-                <div class="email-item selected" data-subject="New Assignment">
+                <div class="email-item selected" data-subject="New Assignment" data-content="" data-text="Task details are available on the dashboard. Prioritize accordingly.">
                     <span>New Assignment</span>
                     <span class="date">June 19, 2024</span>
                 </div>
@@ -67,6 +67,7 @@
             <div class="col-lg-6 col-md-4 col-12 email-content">
                 <h5 id="email-subject">New Assignment</h5>
                 <textarea class="message" rows="10" placeholder="Enter a message"></textarea>
+                <p id="additional-text">Task details are available on the dashboard. Prioritize accordingly.</p>
                 <div class="button-group mt-3">
                     <button class="btn btn-primary compose">Compose</button>
                     <button class="btn btn-secondary reply">Reply</button>
@@ -84,6 +85,7 @@
             const emailItems = document.querySelectorAll('.email-item');
             const messageBox = document.querySelector('.message');
             const emailSubject = document.getElementById('email-subject');
+            const additionalText = document.getElementById('additional-text');
             const replyButton = document.querySelector('.reply');
 
             emailItems.forEach(item => {
@@ -92,11 +94,12 @@
                     item.classList.add('selected');
                     messageBox.value = item.getAttribute('data-content');
                     emailSubject.innerText = item.getAttribute('data-subject');
+                    additionalText.innerText = item.getAttribute('data-text');
                 });
             });
 
             replyButton.addEventListener('click', function() {
-                messageBox.value = "Enter your message...";
+                messageBox.value = "";
             });
         });
     </script>
