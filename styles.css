@@ -13,6 +13,14 @@ body {
     margin-bottom: 20px;
 }
 
+.navbar .navbar-link {
+    color: #000000; /* Make navbar links black */
+}
+
+.navbar .navbar-link:hover {
+    color: #343a40; /* Slightly lighter shade on hover */
+}
+
 /* Main Container */
 .container-fluid {
     flex: 1;
