@@ -21,6 +21,23 @@ body {
     color: #343a40; /* Slightly lighter shade on hover */
 }
 
+/* Hide the hamburger menu on mobile devices */
+.navbar-toggler {
+    display: none;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-left: auto;
+}
+
 /* Main Container */
 .container-fluid {
     flex: 1;
@@ -122,4 +139,26 @@ body {
 .button-group .reply {
     background-color: #6c757d;
     color: #ffffff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar-links .navbar-nav {
+        flex-direction: column;
+    }
+
+    .navbar .navbar-link {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .sidebar {
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .email-list, .email-content {
+        height: auto;
+        padding-bottom: 15px;
+    }
 }
